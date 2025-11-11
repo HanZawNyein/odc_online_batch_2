@@ -1,1 +1,1 @@
-# odc_online_batch_2
+# Odoo Development Course (online) - batch-2
