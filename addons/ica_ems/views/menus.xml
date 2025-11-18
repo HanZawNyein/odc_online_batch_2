@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="ica_ems_root" name="Education Management System">
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="ica_university_category" name="Universities" action="ica_ems.ica_university_action"/>
+    </menuitem>
+</odoo>
