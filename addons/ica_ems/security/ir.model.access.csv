@@ -1,3 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_ica_university,ica.university,model_ica_university,,1,1,1,1
-access_ica_department,ica.department,model_ica_department,,1,1,1,1
+access_ica_class,ica.class,model_ica_class,,1,1,1,1

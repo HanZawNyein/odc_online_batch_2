@@ -3,8 +3,8 @@
     <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
     <menuitem id="ica_ems_root" name="Education Management System">
         <!-- This Menu Item Must have a parent -->
-<!--        <menuitem id="ica_university_category" name="Universities" action="ica_ems.ica_university_action" sequence="0"/>-->
-        <menuitem id="ica_department_category" name="Departments" action="ica_ems.ica_department_action" sequence="1"/>
+        <menuitem id="ica_class_category" name="Class" action="ica_ems.ica_class_action" sequence="0"/>
+<!--        <menuitem id="ica_department_category" name="Departments" action="ica_ems.ica_department_action" sequence="1"/>-->
         <menuitem id="ica_configuration_category" name="Configuration" sequence="2">
             <menuitem id="ica_employee_category" name="Instructors" sequence="0" action="hr.open_view_employee_list_my"/>
             <menuitem id="ica_students_category" name="Students" sequence="0" action="contacts.action_contacts"/>

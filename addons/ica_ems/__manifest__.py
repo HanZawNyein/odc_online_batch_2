@@ -3,9 +3,11 @@
     "author":"Agga, IdeaCode Academy",
     "depends":["base","hr","contacts"],
     "data":[
-        # "security/ir.model.access.csv",
+        "security/ir.model.access.csv",
         # "views/ica_university.xml",
         # "views/ica_department.xml",
+
+        "views/ica_class.xml",
         "views/menus.xml",
     ],
     "category":"Education",

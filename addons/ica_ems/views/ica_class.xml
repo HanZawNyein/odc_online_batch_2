@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ica_class_view_form" model="ir.ui.view">
+        <field name="name">ica_class_view_form_view_form</field>
+        <field name="model">ica.class</field>
+        <field name="arch" type="xml">
+            <form string="ica_class_view_form_form">
+                <header>
+                    <button name="action_draft" type="object" string="Draft" invisible="state != 'not_available'"/>
+                    <button name="action_available" type="object" string="Available" class="btn btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_not_available" type="object" string="Not Available" class="btn btn-danger" invisible="state != 'available'"
+                    confirm="Are you sure?"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="employee_id"/>
+                            <field name="is_in_person"/>
+                            <field name="is_online"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="duration"/>
+                            <field name="start_date" widget="daterange" options="{'end_date_field': 'end_date'}"/>
+                            <field name="end_date" invisible="1"/>
+                        </group>
+                    </group>
+                    <group string="Weekly Information">
+                        <field name="is_mon"/>
+                        <field name="is_tue"/>
+                        <field name="is_wed"/>
+                        <field name="is_thu"/>
+                        <field name="is_fri"/>
+                        <field name="is_sat"/>
+                        <field name="is_sun"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="ica_class_action" model="ir.actions.act_window">
+        <field name="name">Class</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ica.class</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
