@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+
+    <record id="ica_university_view_form" model="ir.ui.view">
+        <field name="name">ica_university_view_form</field>
+        <field name="model">ica.university</field>
+        <field name="arch" type="xml">
+            <form string="ica_university_form">
+                <sheet>
+                    <field name="logo" widget="image" class="oe_avatar"/>
+                    <group>
+                        <field nolabel="1" options="{'line_breaks': False}" widget="text" class="text-break d-block h1"
+                               name="name"
+                               placeholder="e.g. Lumber Inc"/>
+                    </group>
+
+                    <group>
+
+                        <field name="founding_date"/>
+                    </group>
+
+                    <notebook>
+                        <page name="Departments">
+                            <field name="department_ids">
+                                <list>
+                                    <field name="name"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <record id="ica_university_action" model="ir.actions.act_window">
         <field name="name">Universities</field>
         <field name="type">ir.actions.act_window</field>
