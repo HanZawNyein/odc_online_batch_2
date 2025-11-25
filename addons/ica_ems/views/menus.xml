@@ -4,6 +4,7 @@
     <menuitem id="ica_ems_root" name="Education Management System">
         <!-- This Menu Item Must have a parent -->
         <menuitem id="ica_class_category" name="Class" action="ica_ems.ica_class_action" sequence="0"/>
+        <menuitem id="ica_timetable_category" name="Timetable" action="ica_ems.ica_timetable_action" sequence="1"/>
 <!--        <menuitem id="ica_department_category" name="Departments" action="ica_ems.ica_department_action" sequence="1"/>-->
         <menuitem id="ica_configuration_category" name="Configuration" sequence="2">
             <menuitem id="ica_employee_category" name="Instructors" sequence="0" action="hr.open_view_employee_list_my"/>

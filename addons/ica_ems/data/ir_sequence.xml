@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="seq_ica_class" model="ir.sequence">
+        <field name="name">Class</field>
+        <field name="code">ica.class</field>
+        <field name="prefix">IC/</field>
+        <field name="padding">6</field>
+    </record>
+</odoo>

@@ -8,23 +8,37 @@
                 <header>
                     <button name="action_draft" type="object" string="Draft" invisible="state != 'not_available'"/>
                     <button name="action_available" type="object" string="Available" class="btn btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_generate_timetable" type="object" string="Generate Timetable" class="btn btn-primary" invisible="state != 'available'"/>
                     <button name="action_not_available" type="object" string="Not Available" class="btn btn-danger" invisible="state != 'available'"
                     confirm="Are you sure?"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button"
+                                name="action_view_timetable"
+                                type="object"
+                                icon="fa-sitemap"
+                                string="Timetable"/>
+                    </div>
+                    <div class="oe_title">
+                            <label for="reference"/>
+                            <h1><field name="reference" placeholder="e.g. IC/000000"/></h1>
+                        </div>
+
                     <group>
                         <group>
                             <field name="name"/>
+                            <field name="reference"/>
                             <field name="employee_id"/>
                             <field name="is_in_person"/>
                             <field name="is_online"/>
                         </group>
                         <group>
-                            <field name="start_date"/>
+                            <field name="start_datetime"/>
                             <field name="duration"/>
-                            <field name="start_date" widget="daterange" options="{'end_date_field': 'end_date'}"/>
-                            <field name="end_date" invisible="1"/>
+                            <field name="start_datetime" widget="daterange" options="{'end_date_field': 'end_datetime'}"/>
+                            <field name="end_datetime" invisible="1"/>
                         </group>
                     </group>
                     <group string="Weekly Information">
@@ -36,6 +50,16 @@
                         <field name="is_sat"/>
                         <field name="is_sun"/>
                     </group>
+                    <notebook>
+                        <page string="Timetables">
+                            <field name="timetable_ids">
+                                <list>
+                                    <field name="start_datetime"/>
+                                    <field name="end_datetime"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

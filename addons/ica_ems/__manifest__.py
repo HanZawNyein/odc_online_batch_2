@@ -8,6 +8,10 @@
         # "views/ica_department.xml",
 
         "views/ica_class.xml",
+        "views/ica_timetable.xml",
+
+        "data/ir_sequence.xml",
+
         "views/menus.xml",
     ],
     "category":"Education",

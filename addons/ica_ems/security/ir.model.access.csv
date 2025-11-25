@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_ica_class,ica.class,model_ica_class,,1,1,1,1
+access_ica_timetable,ica.timetable,model_ica_timetable,,1,1,1,1
