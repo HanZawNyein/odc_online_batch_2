@@ -24,6 +24,7 @@ class IcaClass(models.Model):
     is_online = fields.Boolean(default=False)
     state = fields.Selection([
         ('draft', 'Draft'),
+        ('confirmed', 'Confirmed'),
         ('available', 'Available'),
         ('not_available', 'Not Available'),
     ], default='draft')
@@ -46,6 +47,7 @@ class IcaClass(models.Model):
         self.state = 'available'
 
     def action_not_available(self):
+        self.timetable_ids.filtered(lambda rec:rec.state == 'draft').unlink()
         self.state = 'not_available'
 
     def action_generate_timetable(self):
@@ -86,6 +88,7 @@ class IcaClass(models.Model):
                     })
 
                 current_date += timedelta(days=1)
+        self.state = 'confirmed'
 
     def action_view_timetable(self):
         return {
@@ -94,4 +97,29 @@ class IcaClass(models.Model):
             "domain": [['id', 'in', self.timetable_ids.ids]],
             "view_mode": "list,form",
             "res_model": "ica.timetable",
+        }
+
+    student_ids = fields.One2many('ica.class.student','class_id', string="Students")
+
+    remain_timetable_count = fields.Integer(compute="_compute_duration")
+
+    @api.depends('timetable_ids')
+    def _compute_duration(self):
+        for rec in self:
+            rec.remain_timetable_count = len(rec.timetable_ids.filtered(lambda x: x.state == 'draft'))
+
+    total_student_count = fields.Integer(compute="_compute_total_student_count")
+
+    @api.depends('student_ids')
+    def _compute_total_student_count(self):
+        for rec in self:
+            rec.total_student_count = len(rec.student_ids)
+
+    def action_view_students(self):
+        return {
+            "type": "ir.actions.act_window",
+            "name": f"{self.name}'s Students",
+            "domain": [['id', 'in', self.student_ids.mapped('partner_id').ids]],
+            "view_mode": "list,form",
+            "res_model": "res.partner",
         }

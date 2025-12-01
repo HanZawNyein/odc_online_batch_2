@@ -9,6 +9,7 @@
 
         "views/ica_class.xml",
         "views/ica_timetable.xml",
+        "views/hr_employee.xml",
 
         "data/ir_sequence.xml",
 
