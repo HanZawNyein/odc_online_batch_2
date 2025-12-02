@@ -11,6 +11,8 @@
         "views/ica_timetable.xml",
         "views/hr_employee.xml",
 
+        "wizard/ica_booking_wizard.xml",
+
         "data/ir_sequence.xml",
 
         "views/menus.xml",

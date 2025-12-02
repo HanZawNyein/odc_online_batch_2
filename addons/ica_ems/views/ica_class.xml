@@ -7,11 +7,14 @@
             <form string="ica_class_view_form_form">
                 <header>
                     <button name="action_draft" type="object" string="Draft" invisible="state != 'not_available'"/>
-                    <button name="action_generate_timetable" type="object" string="Generate Timetable"
-                            class="btn btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_generate_timetable" type="object" class="btn btn-primary"
+                            string="Generate Timetable" invisible="state != 'draft' or timetable_ids"/>
+                    <button name="action_confirmed" type="object" string="Confirm"
+                            class="btn btn-primary" invisible="state != 'draft' or not timetable_ids"/>
                     <button name="action_available" type="object" string="Available" class="btn btn-primary"
                             invisible="state != 'confirmed'"/>
-
+                    <button name="action_booking" type="object" string="Booking" class="btn btn-outline-info"
+                            invisible="state != 'confirmed'"/>
                     <button name="action_not_available" type="object" string="Not Available" class="btn btn-danger"
                             invisible="state != 'available'"
                             confirm="Are you sure?"/>
@@ -24,7 +27,7 @@
                                 type="object"
                                 icon="fa-sitemap"
                                 string="Timetable">
-                            <field name="remain_timetable_count" />
+                            <field name="remain_timetable_count"/>
                             <sppan> Timetable</sppan>
                         </button>
                         <button class="oe_stat_button"
@@ -32,7 +35,7 @@
                                 type="object"
                                 icon="fa-address-book"
                                 string="Students">
-                            <field name="total_student_count" />
+                            <field name="total_student_count"/>
                             <sppan> Students</sppan>
                         </button>
                     </div>
@@ -57,30 +60,39 @@
                             <field name="end_datetime" invisible="1"/>
                         </group>
                     </group>
-                    <group string="Weekly Information">
-                        <field name="is_mon"/>
-                        <field name="is_tue"/>
-                        <field name="is_wed"/>
-                        <field name="is_thu"/>
-                        <field name="is_fri"/>
-                        <field name="is_sat"/>
-                        <field name="is_sun"/>
+                    <group>
+                        <group string="Weekly Information">
+                            <field name="is_mon"/>
+                            <field name="is_tue"/>
+                            <field name="is_wed"/>
+                            <field name="is_thu"/>
+                            <field name="is_fri"/>
+                            <field name="is_sat"/>
+                            <field name="is_sun"/>
+                        </group>
+                        <group string="Invoice Information">
+                            <field name="company_id"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="fees" readonly="state != 'draft'"/>
+                        </group>
                     </group>
                     <notebook>
                         <page string="Timetables">
-                            <field name="timetable_ids" readonly="state == 'available'">
+                            <field name="timetable_ids" readonly="state != 'draft'">
                                 <list>
                                     <field name="start_datetime"/>
                                     <field name="end_datetime"/>
                                     <field name="state" widget="badge" decoration-danger="state == 'cancelled'"
                                            decoration-success="state =='finished'"/>
-                                    <button name="action_finish" type="object" class="btn btn-success" string="Finish" invisible="state != 'draft'"/>
-                                    <button name="action_cancel" type="object" class="btn btn-warning" string="Cancel" invisible="state != 'draft'"/>
+                                    <button name="action_finish" type="object" class="btn btn-success" string="Finish"
+                                            invisible="state != 'draft'"/>
+                                    <button name="action_cancel" type="object" class="btn btn-warning" string="Cancel"
+                                            invisible="state != 'draft'"/>
                                 </list>
                             </field>
                         </page>
                         <page name="Students">
-                            <field name="student_ids">
+                            <field name="student_ids" readonly="1">
                                 <list editable="top">
                                     <field name="partner_id"/>
                                 </list>

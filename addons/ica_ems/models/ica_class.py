@@ -8,7 +8,6 @@ class IcaClass(models.Model):
     _description = 'IcaClass'
 
     name = fields.Char(required=True)
-    company_id = fields.Many2one('res.country', string="University Name")
     employee_id = fields.Many2one('hr.employee', string="Instructor Name")
     start_datetime = fields.Datetime(required=True)
     end_datetime = fields.Datetime(required=True)
@@ -28,7 +27,7 @@ class IcaClass(models.Model):
         ('available', 'Available'),
         ('not_available', 'Not Available'),
     ], default='draft')
-    reference = fields.Char(default= lambda self:_("New"))
+    reference = fields.Char(default= lambda self:_("New"),readonly=True)
 
     timetable_ids = fields.One2many('ica.timetable', 'class_id', string="Timetables")
 
@@ -49,6 +48,9 @@ class IcaClass(models.Model):
     def action_not_available(self):
         self.timetable_ids.filtered(lambda rec:rec.state == 'draft').unlink()
         self.state = 'not_available'
+
+    def action_confirmed(self):
+        self.state = 'confirmed'
 
     def action_generate_timetable(self):
         for rec in self:
@@ -88,7 +90,7 @@ class IcaClass(models.Model):
                     })
 
                 current_date += timedelta(days=1)
-        self.state = 'confirmed'
+        # self.state = 'confirmed'
 
     def action_view_timetable(self):
         return {
@@ -122,4 +124,18 @@ class IcaClass(models.Model):
             "domain": [['id', 'in', self.student_ids.mapped('partner_id').ids]],
             "view_mode": "list,form",
             "res_model": "res.partner",
+        }
+
+    company_id = fields.Many2one('res.company', string="University Name",default=lambda self: self.env.company,readonly=1)
+    currency_id = fields.Many2one('res.currency', string="Currency",related='company_id.currency_id')
+    fees = fields.Monetary(currency_field='currency_id')
+
+    def action_booking(self):
+        return {
+            "type": "ir.actions.act_window",
+            "name": f"{self.name}'s Booking Students",
+            "view_mode": "form",
+            "res_model": "ica.booking.wizard",
+            "target":"new",
+            "context":{"default_company_id":self.company_id.id,"default_fees":self.fees},
         }

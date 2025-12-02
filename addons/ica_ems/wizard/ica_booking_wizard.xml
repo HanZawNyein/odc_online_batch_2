@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ica_booking_wizard_view_form" model="ir.ui.view">
+        <field name="name">ica_booking_wizard_view_form</field>
+        <field name="model">ica.booking.wizard</field>
+        <field name="arch" type="xml">
+            <form string="ica_booking_wizard_form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                        </group>
+                        <group>
+                            <field name="fees"/>
+                            <field name="user_id"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button type="object" string="Add Students" class="btn btn-primary" name="action_add_students"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
