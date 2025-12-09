@@ -3,6 +3,7 @@
     "author":"Agga, IdeaCode Academy",
     "depends":["base","hr","contacts"],
     "data":[
+        "security/security_groups.xml",
         "security/ir.model.access.csv",
         # "views/ica_university.xml",
         # "views/ica_department.xml",

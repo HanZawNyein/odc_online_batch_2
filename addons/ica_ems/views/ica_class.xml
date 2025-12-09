@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <record id="ica_class_view_tree" model="ir.ui.view">
+        <field name="name">ica_class_view_tree</field>
+        <field name="model">ica.class</field>
+        <field name="arch" type="xml">
+            <list string="ica_class_tree">
+                <field name="reference"/>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
     <record id="ica_class_view_form" model="ir.ui.view">
         <field name="name">ica_class_view_form_view_form</field>
         <field name="model">ica.class</field>
