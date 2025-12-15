@@ -1,10 +1,12 @@
 {
     "name":"Education Management System",
     "author":"Agga, IdeaCode Academy",
-    "depends":["base","hr","contacts"],
+    "depends":["base","web","hr","contacts"],
     "data":[
         "security/security_groups.xml",
         "security/ir.model.access.csv",
+
+        "views/res_partner.xml",
         # "views/ica_university.xml",
         # "views/ica_department.xml",
 
@@ -16,8 +18,15 @@
 
         "data/ir_sequence.xml",
 
+        "views/ica_ems_client_action.xml",
+
         "views/menus.xml",
     ],
+    "assets":{
+        "web.assets_backend":[
+            "ica_ems/static/src/**/*",
+        ],
+    },
     "category":"Education",
     "auto_install":False,
     "installable":True,

@@ -11,6 +11,7 @@
             <menuitem id="ica_employee_category" name="Instructors" sequence="0" action="hr.open_view_employee_list_my"/>
             <menuitem id="ica_students_category" name="Students" sequence="0" action="contacts.action_contacts"/>
             <menuitem id="ica_university_category" name="Universities" sequence="0" action="base.action_res_company_form"/>
+            <menuitem id="ica_ems_client_category" name="EMS Client Action" sequence="0" action="ica_ems.ica_ems_client_action"/>
         </menuitem>
     </menuitem>
 </odoo>

@@ -116,6 +116,7 @@
             </form>
         </field>
     </record>
+
     <record id="ica_class_action" model="ir.actions.act_window">
         <field name="name">Class</field>
         <field name="type">ir.actions.act_window</field>

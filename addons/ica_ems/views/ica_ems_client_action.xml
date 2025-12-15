@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.actions.client" id="ica_ems_client_action">
+        <field name="name">EMS</field>
+        <field name="tag">ica_ems.emsClientAction</field>
+        <field name="target">main</field>
+    </record>
+</odoo>
