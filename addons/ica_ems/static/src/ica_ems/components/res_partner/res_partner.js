@@ -46,7 +46,7 @@ export class ResPartnerComponent extends Component {
     }
 
     removeCurrentPartner() {
-        console.log("removeCurrentPartner")
+        // console.log("removeCurrentPartner")
         this.state.currentPartner = {
             id: null,
             name: null,
