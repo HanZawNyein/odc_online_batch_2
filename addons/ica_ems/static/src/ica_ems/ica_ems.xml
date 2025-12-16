@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
     <t t-name="ica_ems.emsClientAction">
-       <div class="container mt-3">
-            <h1>Hello World</h1>
-           <div class="container">
-               <h1>
-                   <t t-esc="state.count"/>
-               </h1>
-               <button class="btn btn-success m-2" t-on-click="addCount">Add</button>
-               <button class="btn btn-danger m-2" t-on-click="removeCount">Remove</button>
+        <Layout display="{ controlPanel: {} }">
+           <div class="mt-3">
+<!--                <h1>Hello World</h1>-->
+               <!--           <div class="container">-->
+               <!--               <h1>-->
+               <!--                   <t t-esc="state.count"/>-->
+               <!--               </h1>-->
+               <!--               <button class="btn btn-success m-2" t-on-click="addCount">Add</button>-->
+               <!--               <button class="btn btn-danger m-2" t-on-click="removeCount">Remove</button>-->
+               <!--           </div>-->
+               <ResPartnerComponent partners="state.partners" fetchPartners.bind="fetchPartners" createPartner.bind="createPartner"/>
            </div>
-           <ResPartnerComponent/>
-       </div>
+        </Layout>
     </t>
 </templates>
