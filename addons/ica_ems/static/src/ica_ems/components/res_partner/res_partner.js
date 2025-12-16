@@ -34,7 +34,7 @@ export class ResPartnerComponent extends Component {
         // console.log()
         let result = await this.props.createPartner(this.state.currentPartner);
         if (result) {
-            this.removeCurrentPartner()
+            this.removeCurrentPartner();
         }
 
         // console.log("I am res partner component.")
