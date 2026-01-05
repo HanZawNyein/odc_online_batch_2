@@ -21,6 +21,8 @@
         "views/ica_ems_client_action.xml",
 
         "views/menus.xml",
+        "report/report_template.xml",
+        "report/report_action.xml",
     ],
     "assets":{
         "web.assets_backend":[

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ation_report_ica_classs" model="ir.actions.report">
+            <field name="name">Classes</field>
+            <field name="model">ica.class</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ica_ems.report_ica_class</field>
+            <field name="report_file">ica_ems.report_ica_class</field>
+            <field name="print_report_name">'Production Order - %s' % object.name</field>
+            <field name="binding_model_id" ref="model_ica_class"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>
