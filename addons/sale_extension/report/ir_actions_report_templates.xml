@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+
+        <div id="informations" position="after">
+            <div class="m-3">
+                <h1>Hello</h1>
+                <h1><div t-field="doc.user_id"/></h1>
+            </div>
+        </div>
+    </template>
+
+</odoo>
