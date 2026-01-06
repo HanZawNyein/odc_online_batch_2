@@ -1,6 +1,9 @@
 services:
   web:
-    image: odoo:19.0
+    build:
+      context: .
+      dockerfile: Dockerfile # optional
+#    image: odoo:19.0
     depends_on:
       - db
     ports:
@@ -13,6 +16,20 @@ services:
       - PASSWORD_FILE=/run/secrets/postgresql_password
     secrets:
       - postgresql_password
+#  web1:
+#    image: odoo:18.0
+#    depends_on:
+#      - db
+#    ports:
+#      - "8070:8069"
+#    volumes:
+#      - odoo-web1-data:/var/lib/odoo
+##      - ./config:/etc/odoo
+##      - ./addons:/mnt/extra-addons
+#    environment:
+#      - PASSWORD_FILE=/run/secrets/postgresql_password
+#    secrets:
+#      - postgresql_password
   db:
     image: postgres:18
     environment:
@@ -26,6 +43,7 @@ services:
       - postgresql_password
 volumes:
   odoo-web-data:
+#  odoo-web1-data:
   odoo-db-data:
 
 secrets:
