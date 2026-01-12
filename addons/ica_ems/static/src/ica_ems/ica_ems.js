@@ -16,6 +16,7 @@ class EmsClientAction extends Component {
             partners: [],
         });
         this.ormService = useService('orm');
+        this.actionService = useService('action');
 
         onWillStart(async () => {
             await this.fetchPartners();
@@ -34,14 +35,18 @@ class EmsClientAction extends Component {
         let partners = {}
         if (values.id) {
             //     write
-            partners= await this.ormService.write('res.partner', [values.id],{...values});
+            partners = await this.ormService.write('res.partner', [values.id], {...values});
         } else {
             console.log("i am from ica_ems component");
-            partners =  await this.ormService.create('res.partner', [{...values}]);
+            partners = await this.ormService.create('res.partner', [{...values}]);
             // console.log(newPartner)
         }
         await this.fetchPartners();
         return partners;
+    }
+
+    openStudentsAction() {
+        this.actionService.doAction('contacts.action_contacts')
     }
 }
 

@@ -11,6 +11,9 @@
                <!--               <button class="btn btn-success m-2" t-on-click="addCount">Add</button>-->
                <!--               <button class="btn btn-danger m-2" t-on-click="removeCount">Remove</button>-->
                <!--           </div>-->
+               <div class="container">
+                   <button class="btn btn-primary mm-2" t-on-click="openStudentsAction">Students</button>
+               </div>
                <ResPartnerComponent partners="state.partners" fetchPartners.bind="fetchPartners" createPartner.bind="createPartner"/>
            </div>
         </Layout>
