@@ -10,4 +10,13 @@ class PartnerXlsx(models.AbstractModel):
             # One sheet by partner
             sheet = workbook.add_worksheet(report_name[:31])
             bold = workbook.add_format({'bold': True})
-            sheet.write(0, 0, obj.name, bold)
+            x, y = 0, 0
+            sheet.write(x, y, obj.name, bold)
+            sheet.write(x, y+1, obj.phone)
+
+            for so in obj.sale_order_ids:
+                x+=1
+                sheet.write(x, y, so.name)
+
+                sheet.write(x, y+1, so.amount_total)
+                sheet.write(x, y+2, so.currency_id.symbol)

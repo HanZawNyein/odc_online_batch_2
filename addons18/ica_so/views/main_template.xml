@@ -2,6 +2,7 @@
 <odoo>
     <template id="ica_so.main_template" name="ROOMS Public Template">
         <t t-call="website.layout">
+            <t t-esc="data"/>
             <h1>Hello Rooms</h1>
         </t>
     </template>
